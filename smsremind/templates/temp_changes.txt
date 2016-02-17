@@ -1,0 +1,25 @@
+<div>
+        <ul class="nav nav-tabs">
+            <li><a href="{% url 'job_form' %}">Add Job</a></li>
+            <li><a href="{% url 'rem_form' %}">Set Reminder</a></li>
+        </ul>
+    </div>
+
+ <!-->
+    <div class="testbox">
+        <form action="/">
+        <hr>
+        <div class="accounttype">
+        </div>
+         <hr>
+        <label id="icon" for="name"><i class="icon-envelope "></i></label>
+        <input type="text" name="name" id="name" placeholder="Email" required/>
+        <label id="icon" for="name"><i class="icon-user"></i></label>
+        <input type="text" name="name" id="name" placeholder="Name" required/>
+        <label id="icon" for="name"><i class="icon-shield"></i></label>
+        <input type="password" name="name" id="name" placeholder="Password" required/>
+        <div class="gender">
+        </div> 
+        <a href="#" class="button">Add New Job</a>
+        </form>
+    <div>-->

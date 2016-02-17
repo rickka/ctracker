@@ -1,0 +1,8 @@
+<div>
+        <ul class="nav nav-tabs">
+            <li><a href="{% url 'job_form' %}">Add Job</a></li>
+            <li><a href="{% url 'rem_form' %}">Set Reminder</a></li>
+        </ul>
+    </div>
+
+

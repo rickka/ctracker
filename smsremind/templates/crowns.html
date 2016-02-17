@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load tabs %}
+{% block navigation %}
+{% tab "nav" "crowns" %}
+{{ block.super }}
+{% endblock %}
+{% load pagination_tags %}
+{% block extrahead %}
+<link href="{{ STATIC_URL }}css/confirm.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<script>
+  $().ready(function(){
+    $('#btnBalStatus button').click(function(){
+      flash("<i class='icon-spinner icon-spin'></i> Updating Results","");
+      $('#due').val($(this).val());
+      $('#form1').submit();
+    });
+  });
+</script>
+
+<div class="row">
+{% if messages %}
+<div class="span12">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<div class="span12">  
+<h3 class="title">Crowns</h3>
+
+<form id="form1" class="form-inline" method="get" > 
+  <div class="toolbar">
+    <input type="hidden" id="sort" name="sort" value="">
+    <input type="hidden" id="order" name="order" value="">
+    <input type="hidden" id="page" name="page" value="1">
+    <input type="hidden" id="statusId" name="s"  value="0"/>
+    <input type="text" name="searchq" class="input-large" value=""  placeholder="Search" title="Search by List Name or Description "/>
+        
+    <button class="btn"><i class="icon-search"></i> Search</button>
+    &nbsp;&nbsp;
+        {% if 0 %}
+        <a class="btn" target="_blank" href="/invoices/invoice-20001.pdf"><i class="icon-download-alt"></i> Microsoft Excel</a></li>
+    <input type="hidden" id="due" name="due"  value="0"/>
+        
+    <div class="btn-group pull-right" data-toggle="buttons-radio" id="btnBalStatus">
+      <a href="{% url 'classified' %}"><button class="btn btn-info  active " type="button" value="0">All</button></a>
+      <button class="btn btn-info " type="button" value="1">Due</button>
+    </div>
+        {% endif %}
+  </div>
+
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr class="header">
+        <th sort="id" style="width:40px">ID</th>
+        <th sort="name" style="min-width:160px">Code</th>
+                <th sort="name" style="min-width:160px">Suscriber</th>
+        
+                
+      </tr>
+    </thead>
+        {% autopaginate codes 25 %}
+    <tbody>
+        {% for code in codes %}
+      <tr>
+        <td class="row-highlight">{{forloop.counter|add:page_obj.start_index|add:-1}}</td>
+        <td>{{code.code}}</td>
+                <td>{{code.subscriber.phone_no}}</td>
+              
+        
+                
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% paginate %}
+  
+  
+</form>
+</div>
+</div>
+{% endblock %}
+{% block pagescripts %}
+{% if 0 %}
+<script type="text/javascript" src="{{STATIC_URL}}js/jconfirmaction.jquery.js"></script>
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+    $('.delete').jConfirmAction();
+  });
+</script>
+{% endif %}
+{% endblock %}
+
+

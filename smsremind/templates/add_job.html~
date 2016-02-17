@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load tabs %}
+
+{% block navigation %}
+{% tab "nav" "contractlist" %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container" data-spy="scroll" data-offset="20">
+    <div >
+        <form action="/add_job/" method="POST">
+                {% csrf_token %}   
+                <p class="pfloat"> <h5><b>Description </b></h5> {{ job_form.jobname }}</p>
+            <hr>
+                <p class="pfloat"> <h5><b>Expected(Deadline) </b></h5>{{ job_form.deadline }}</p>
+            <hr>
+		<p class="pfloat"> <h5><b>Text </b></h5>{{ job_form.suggestion }}</p>
+            <hr>
+		<p class="pfloat"> <h5><b>Text </b></h5>{{ job_form.honeypot }}</p>
+	    <hr>
+                <p> <input class="mybutton" type="Submit" value="Add Job" /></p>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+

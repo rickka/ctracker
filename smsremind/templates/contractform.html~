@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{% if messages %}
+    <div class="form-group">
+	<div class="small-6 small-centered columns">
+	    {% for message in messages %}
+		<div data-alert class="alert-box-{{ message.tags }}">
+		    <p class="alert-font">{{ message }}
+		    <a href="#" class="close" data-dismiss="alert">x</a>
+		    </p>
+		</div>
+	    {% endfor %}
+	</div>
+    </div>
+{% endif %}
+
+<form action="/add_contract/" method="POST">  <!-- role="form" -->
+    {% csrf_token %}
+
+    <div class="col-lg-6">
+        <div class="well well-sm"></div>
+
+<!--================================================Title============================================================================-->
+	<div class="form-group"></div>
+	    <label for="InputName"> <strong> Contract Title </strong> </label>
+
+            {% if ctc_form.errors.contract_title %}
+	        <div class="form-group"><p class="error-font">this field is required</p> </div>
+	    {% endif %}
+
+	    <div class="input-group">
+		<input name="contract_title" id="ContractTitle" class="form-control" type="text" required="" placeholder="" name="ContractTitle"></input>
+
+<!--================================================Name============================================================================-->
+	<div class="form-group"></div>
+	    <label for="ClientName"> <strong> Client Name </strong> </label>
+
+            {% if ctc_form.errors.client_name %}
+	        <div class="form-group"><p class="error-font">this field is required</p> </div>
+	    {% endif %}
+
+	    <div class="input-group"></div>
+		<input name="client_name" id="ClientName" class="form-control" type="text" required="" placeholder="" name="ClientName"></input>
+
+<!--================================================Contact============================================================================-->
+
+        <div class="form-group"></div>
+	    <label for="ClientContact"> <strong> Client Contact </strong> </label>
+
+            {% if ctc_form.errors.client_contact %}
+	        <div class="form-group"><p class="error-font"> *enter a valid Phone number</p> </div>
+	    {% endif %}
+
+
+	    <div class="input-group"></div>
+		<input name="client_contact" id="ClientContact" class="form-control" type="text" required="" placeholder="" name="ClientContact"></input>
+
+<!--================================================Signee============================================================================-->
+
+	<div class="form-group"></div>
+	    <label for="downer"> <strong> Dmark Signee </strong> </label>
+
+	    {% if ctc_form.errors.dmark_owner %}
+	        <div class="form-group"><p class="error-font">this field is required</p> </div>
+	    {% endif %}
+
+	    <div class="input-group"></div>
+		<p>
+		<!--<input id="downer" class="form-control" type="email" required="" placeholder="Dmark Signee" name="downer"></input>-->{{ ctc_form.dmark_owner }}</p>
+
+<!--================================================Signed============================================================================-->
+
+	<div class="form-group"></div>
+	    <label for="signed"> <strong> Signed On </strong> </label>
+	    <div class="input-group"></div>
+                <p>
+		<!---<input id="signed" class="form-control" type="email" required="" placeholder="Date contract was signed" name="signed"></input>-->{{ ctc_form.date_signed }}</p>
+
+<!--================================================Expires============================================================================-->
+        <div class="form-group"></div>
+	    <label for="expiry"> <strong> Expires On </strong> </label>
+	    <div class="input-group"></div>
+                <p><!--
+		<input id="expires" class="form-control" type="email" required="" placeholder="Date contract expires" name="expires"></input>-->{{ ctc_form.date_expiry }}</p>
+
+<!--	<div class="form-group"></div> 
+	    <label for="alert"><strong> Set Reminder: </strong> </label>
+                <div class="input-group"></div>
+-->                 	
+ 
+<!--================================================Submit============================================================================-->
+       
+	<div class="form-group"></div>
+	    <input id="submit" class="btn btn-info pull-left" type="Submit" value="Submit" name="submit"></input>
+
+
+</form>
+
+
+{% endblock %}
+
+

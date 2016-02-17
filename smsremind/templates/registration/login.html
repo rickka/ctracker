@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html><head>
+	<meta name="google-site-verification" content="NxIx8dOrztsL6ForQDeHcmnSsmoYhOI0CqAktgcSXM0" />
+	<title>EABL PROMO - Welcome</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style type="text/css">body{padding-top:75px; padding-bottom:0px}</style>
+	<link href="" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{{STATIC_URL}}css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}css/app.css" rel="stylesheet">
+	<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+	<script>
+		function demo_login(){
+			flash("<i class='icon-spinner icon-spin icon-large'></i> Signing in to Demo...","success",false)
+			$('#email').val("demo@microbill.net");
+			$('#pwd').val("demo");
+			window.setTimeout(function(){
+				$.post("/signin",{email:'demo@microbill.net', pwd:'demo'}, function(resp){
+					if(resp=='ok') location='/'; else alert(resp);
+				})
+			},2000);
+		}
+	</script>
+
+	<style>
+		.container{max-width:960px}
+		#flash_container{position:fixed; margin-top:10px;
+	</style>
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="/">EABL PROMO</a>
+			</div>
+		</div>
+		<div id="flash_container"><div id="flash"><span></span></div></div>
+	</div>
+
+
+
+<div class="container">
+			
+	<div class="row-fluid">
+		<div class="span7 hidden-phone">
+			
+			<ul id="mainnav" class="nav nav-tabs" style="margin-top:20px">
+				<li class="active"><a href="#features" data-toggle="tab">Features</a></li>
+                {% if 0 %}
+				<li><a href="#technology" data-toggle="tab">Technology</a></li>
+				<li><a href="#privacy" data-toggle="tab">Privacy</a></li>
+				<li><a href="#pricing" data-toggle="tab">Pricing</a></li>
+                {% endif %}
+			</ul>	
+			
+			<div id="tabcontent1" class="tab-content">
+				<div class="tab-pane active" id="features">
+					<h3 class="title">EABL PROMO</h3>
+					{% if 0 %}
+					<p><i class="icon-ok-sign"></i> Send Invoice to your Clients in Seconds</p>
+					<p><i class="icon-ok-sign"></i> Manage Database of Clients, Products and Tax Rates</p>
+					<p><i class="icon-ok-sign"></i> Email or Download Invoice & Estimates in PDF</p>
+					<p><i class="icon-ok-sign"></i> Schedule Automatic Generatation of Invoices</p>
+					<p><i class="icon-ok-sign"></i> View Customer Balance in One Click</p>
+					<p><i class="icon-ok-sign"></i> Create Estimates & Convert them to Invoices</p>
+					<p><i class="icon-ok-sign"></i> Receive Payments & Generate Receipts</p>
+                    {% endif %}
+				</div>
+				<div class="tab-pane" id="technology">
+					<h3 class="title">Technology</h3>
+                    {% if 0 %}
+					<p>
+						MetroBill is a Cloud based Invoicing application Delivered as a Service (SAAS), 
+						This means you get power of cloud computing without any worries related to Servers, Hardware, Patches, Maintainance and Upgrades.
+						<br/>
+						Your applications is maintained by us and any upgrades, patches and new software features are automatically applied.
+						<br/>
+						Your Data and Passwords are Encrypted with latest technologies and stored in Secured Datacenters Owned and Managed by HP
+					</p>
+					<p>
+						MetroBill is powered by <a href="http://www.hpcloud.com" target="blank">HP Cloud Services</a> which uses open cloud architecture based on OpenStack&trade;
+						HP's Converged Cloud framework which provides the values of choice, confidence, and consistency.
+					</p>
+					<p>
+						An open and interoperable approach to cloud infrastructure and services provides the foundation for creating the next 
+						generation of cloud-based services. By closely collaborating with the developer community and capitalizing on the strength 
+						of HP's technology portfolio, HP Cloud Services is committed to providing seamless and secure experiences for every customer
+					</p>
+					<p>More information on HP Cloud Services can be found <a href="https://www.hpcloud.com/about-us" target="_blank">here</a>
+                    {% endif %}
+				</div>
+				
+				
+				<div class="tab-pane" id="privacy">
+					<h3 class="title">Data Privacy </h3>
+                        {% if 0 %}
+						<p>
+						Given the ever growing popularity of software as a service, many people are rightly concerned about privacy. 
+						Many large corporations are frequently in the news for changes made to their privacy policies.
+						<p>
+						<p>
+						<strong>We respect your privacy</strong> and we assure you that your data will never be shared with third-parties and 
+						It will not be used for any other purposes besides your own usage.
+						Our Applications are designed on Multi-tenant Architecture and we make sure that your data is Safe, Secure and only accesible by you or your users.
+						</p>
+						
+						<p>
+							<strong>No Bindings</strong>: In case you want to discontinue the service, you are free to download all your data , and delete it from our servers.
+							The data download facility is coming soon.
+						</p>
+                        {% endif %}
+				</div>
+				
+				<div class="tab-pane" id="pricing">
+					<h3 class="title"><i class="icon-gift"></i> Free Quota </h3>
+                    {% if 0 %}
+					<p>
+						Create upto 30 Invoices and 30 Estimates every month for FREE - No Credit Card Required and No Hidden Charges whatsoever 
+					</p>
+					<p class="text-info">
+						The free quota allows you to create unlimited number of Users, Customers, Products and Taxes
+					</p>
+					
+					<hr/>
+					<h3 class="title"><i class="icon-thumbs-up"></i> Exceeding FREE Quota</h3>
+					<p>
+						If you wish to exceed the FREE Quota, The following charges will be applicable. 
+					</p>
+					
+					<table class="table table-hover table-condensed">
+						<thead>
+						<tr class="header"><th>No of Invoices / Estimates</th><th>Monthly Charge</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>0 - 30</td><td><b>FREE</b></td></tr>
+							<tr><td>30 - 100</td><td>$ 5 per month</td></tr>
+							<tr><td>100 - 500</td><td>$ 10 per month</td></tr>
+							<tr><td>500 - 1000</td><td>$ 20 per month</td></tr>
+							<tr><td>1000 - 5000</td><td><i class="icon-dollar-sign"></i>$ 45 per month</td></tr>
+						</tbody>
+						<tfoot><tr><td colspan="2"><small>All prices are in US Dollars</small></td></tr></tfoot>
+					</table>
+					
+					<br/>
+					<div class="alert alert-success">Currently we are in Beta and We are not charging anyone until further notice</div>	
+					{% endif %}
+				</div>
+				
+				
+				
+			</div>
+		</div>
+		<div class="span4 offset1" style="padding-top:25px">
+{% if 0 %}			
+
+<script>
+	$().ready(function(){
+	
+		$('form').submit(function(){
+			flash("<i class='icon-spinner icon-spin icon-large'></i> Signing in...","info",false)
+			$.post('/signin', $('form').serialize(), function(resp){
+				if(resp != 'ok' ){
+					flash(resp,"error")
+				}else {
+					location="/";
+				}
+			});
+			return false;
+		});
+	});
+</script>
+{% endif %}
+<div class="toolbar">
+		<form id="form1" class="form-vertical form-compact" method="POST">
+            {% csrf_token %}
+			<h4>Sign in</h4>
+			
+			
+			
+			<div class="control-group">
+				<label class="control-label">Username</label>
+				<div class="controls">
+					<input type="text" name="username" id="email" style="width:93%"/>
+				</div>	
+			</div>
+
+			<div class="control-group">
+				<label class="control-label">Password</label>
+				<div class="controls">
+					<input type="password" name="password" id="pwd" style="width:93%"/>
+				</div>	
+			</div>
+			
+			<div class="control-group">
+				<p><button class="btn btn-primary">Sign in</button></p>
+                {% if 0 %}
+				<a href="/forgotpwd">Forgot Password ?</a>
+                {% endif %}
+			</div>	
+		</form>	
+
+		<hr/>
+	<div class="row-fluid">
+    {% if 0 %}
+	<div class="span6" style="margin-bottom:15px">
+		<button onclick="demo_login()" class="btn btn-danger btn-block" href="javascript:;">LIVE DEMO <i class="icon-double-angle-right"></i></button>
+	</div>
+	<div class="span6">	
+		<a class="btn btn-success btn-block" href="/signup">SIGN UP NOW <i class="icon-double-angle-right"></i></a>
+	</div>	
+    {% endif %}
+	</div>
+</div>	
+
+		</div>
+	</div>
+	
+</div>
+
+
+
+{% if 0 %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=219233494756945";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% endif %}
+		
+<div class="navbar" style="margin-top:20px">
+<div class="navbar-inner">
+	<div class="container" style="padding-top:10px; padding-bottom:10px;">
+		<ul class="nav">
+			<li><p class="navbar-text">&copy; 2015 DMark Mobile</p></li>
+			<li><a data-toggle="modal" href="/static/templates/contactus.html" data-target="#modal_contact">Send us a Message <i class="icon-external-link"></i></a></li>
+            {% if 0 %}
+			<li style="padding-top:10px"><a href="https://twitter.com/Metrobill1" class="twitter-follow-button"  data-size="small" data-show-count="true" data-show-screen-name="false">Follow @Metrobill1</a></li>
+			<li style="padding-top:10px">
+				<div class="fb-like" data-href="http://www.facebook.com/MetroBill.net" data-send="true" data-layout="button_count" data-width="180" data-show-faces="false" data-font="arial"></div>
+			</li>
+            {% endif %}
+		</ul>
+	</div>
+</div>
+</div>	
+{% if 0 %}
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{% endif %}
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+<script src="{{STATIC_URL}}js/app.js"></script>
+
+
+<form id="frm_contactus" class="form-horizontal form-compact">
+<div id="modal_contact" class="modal fade hide">
+	<div class="modal-header well">
+		<a class="close" data-dismiss="modal">x</a>
+		<h3>Contact Us</h3>
+	</div>
+	<div class="modal-body"></div>
+	<div class="modal-footer">
+		<button type="button" onclick="contactus_save()" class="btn btn-primary"><i class="icon-ok"></i> Send</button>
+		<a class="btn" data-dismiss="modal"><i class="icon-remove"></i> Close</a>
+	</div>
+</div>
+</form>			
+
+{% if 0 %}
+	
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37574192-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+{% endif %}
+</body></html>

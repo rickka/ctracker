@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div>
+        <div>
+            <form action="/set_reminder/" method="POST">
+                {% csrf_token %}
+                <p> <h5>Select Job</h5> {{ rem_form.job}}</p>
+                    
+                <hr>
+                <p> <h5>Select person in charge</h5> {{ rem_form.owner}}</p>
+                <hr>
+                    {% if rem_form.errors %}
+                        {% for field in rem_form %}} 
+                            {% for error in field.errors %}
+                                {{ error | escape }}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                <p></p>
+                <p class="custom-padd"> <h5>Contact (receives reminder)</h5> {{ rem_form.contact}}</p>
+                <hr>
+                <input class="mybutton" type="Submit" value="Set Reminder"/>
+                
+            </form>
+        </div>
+
+</div>
+
+{% endblock %}

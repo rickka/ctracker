@@ -1,0 +1,162 @@
+{% load tabs %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contract Inventory</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">body{padding-top:70px; padding-bottom:60px}</style>
+	<link href="" rel="shortcut icon" type="image/x-icon"/>
+	<link href="{{ STATIC_URL }}css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/jquery.cleditor.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/select2.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/app.css" rel="stylesheet">
+	
+	<script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+	{% block extrahead %}
+    {% endblock %}
+
+
+</head>
+<body>
+	<div id="flash_container"><div id="flash"><span></span></div></div>
+
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="/">Contract Inventory</a>
+				<ul class="nav pull-right">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> {{user}} <b class="caret"></b></a>
+						<ul class="dropdown-menu"><li><a href="/profile">Manage Profile </a></li><li><a href="/accounts/logout/">Sign Out </a></li></ul>
+					</li>  
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<ul id="mainnav" class="nav nav-tabs">
+        {% if 0 %}
+		<li class="dropdown pull-right">
+			<a class="dropdown-toggle " data-toggle="dropdown" href="#"><i class="icon-pencil  btn"></i></a>
+			<ul class="dropdown-menu">
+				<li><a href="/invoices/entry/0"> New Invoice </a></li>
+				<li><a href="/estimates/entry/0"> New Estimate </a></li>
+				<li><a href="/payments/entry/0"> New Payment Record </a></li>
+				<li class="divider"></li>
+				<li><a href="/customers/entry/0"> New Customer </a></li>
+				<li><a href="/products/entry/0"> New Product </a></li>
+				<li><a href="/users/entry/0"> New User </a></li>
+				<li class="divider"></li>
+				<li><a href="/taxes/entry/0"> New Tax Rate </a></li>
+				<li><a href="/payment_methods/entry/0"> New Payment Method </a></li>
+			</ul>
+		</li>
+        {% endif %}
+		{% block navigation %}
+
+	<li {% iftab "nav" "add_contract" %}class="active"{% endiftab %} ><a href="{% url "add_contract" %}">Add Contract</a></li>
+        <li {% iftab "nav" "contractlist" %}class="active"{% endiftab %} ><a href="{% url "contractlist" %}">View Contracts</a></li>
+      		
+		{% endblock %}
+		
+		</ul>
+	</div>
+	
+	
+	<div class="container" id="main">
+		{% block content %}
+        {% endblock %}
+	
+	
+	
+
+	</div>
+		
+	
+		
+<div class="navbar navbar-fixed-bottom">
+<div class="navbar-inner">
+	<div class="container">
+		<ul class="nav">
+			<li><p class="navbar-text">&copy; 2016 DMARK Mobile</p></li>
+			<li><a data-toggle="modal" href="/static/templates/contactus.html" data-target="#modal_contact">Support <i class="icon-external-link"></i></a></li>
+		</ul>
+	</div>
+</div>
+</div>	
+
+
+
+	
+	<!-- JScripts -->
+	<script src="{{ STATIC_URL }}js/jquery-ui.1.9.2.min.js"></script>
+	<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.cleditor.min.js"></script>
+	<script src="{{ STATIC_URL }}js/select2.min.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.activetable.js"></script>
+	<script src="{{ STATIC_URL }}js/app.js"></script>
+	{% block pagescripts %}
+    {% endblock %}
+	<form id="frm_contactus" class="form-horizontal form-compact">
+	<div id="modal_contact" class="modal fade hide">
+		<div class="modal-header well">
+			<a class="close" data-dismiss="modal">x</a>
+			<h3>Contact Us</h3>
+		</div>
+		<div class="modal-body"></div>
+		<div class="modal-footer">
+			<button type="button" onclick="contactus_save()" class="btn btn-primary"><i class="icon-ok"></i> Send</button>
+			<a class="btn" data-dismiss="modal"><i class="icon-remove"></i> Close</a>
+		</div>
+	</div>
+	</form>			
+	<!-- Google Analytics -->
+	
+	
+	
+	<script>
+	$().ready(function(){
+    {% if 0 %}
+		var path = '/dashboard';
+		path = "/" + path.split("/")[1];
+		$('#mainnav a[href="' + path + '"]').closest("li").addClass("active");
+		
+		if(path=='/taxes' || path=='/settings'){
+			$('#setting').addClass("active");
+		}
+	{% endif %}	
+		$(".select2").select2({width:'copy'});
+		$('*[rel=popover]').popover({trigger:'hover', placement:'top'});
+	})
+	</script>
+
+	<script>
+	$(document).ready(function() {
+        $(".cleditor").cleditor({
+          width:        500, // width not including margins, borders or padding
+          height:       200, // height not including margins, borders or padding
+          controls:     // controls to add to the toolbar
+                        "bold italic underline | font size " +
+                        "style | color highlight removeformat | bullets numbering | " +
+                        "alignleft center alignright justify | " +
+                        "rule image link unlink | source",
+          sizes:        // sizes in the font size popup
+                        "1,2,3,4,5,6,7",
+          useCSS:       false, // use CSS to style HTML when possible (not supported in ie)
+          docType:      // Document type contained within the editor
+                        '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+          docCSSFile:   // CSS file used to style the document contained within the editor
+                        "", 
+          bodyStyle:    // style to assign to document body contained within the editor
+                        "margin:4px; font:10pt Arial,Verdana; cursor:text"
+        });
+      });
+	  
+	  
+	</script>
+	
+</body>
+</html>
